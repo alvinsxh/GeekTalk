@@ -11,22 +11,8 @@ import javax.sql.rowset.RowSetFactory;
 import javax.sql.rowset.RowSetProvider;
 
 public class SqlIO {
-	/**
-	 * 数据库连接Connection变量，初始值为null。
-	 */
 	private Connection conn = null;
-	/**
-	 * RP-AEC数据库表名，初始值为tazpga。
-	 */
 	private String dbName = "oop";
-
-	/**
-	 * 带参数构造函数。
-	 * 
-	 * @param dbName
-	 *            要连接的数据库的名称。
-	 */
-	
 	private String SQL_TYPE;
 	
 	public SqlIO(String dbName, String SQL_TYPE) {
@@ -34,29 +20,14 @@ public class SqlIO {
 		this.SQL_TYPE = SQL_TYPE;
 	}
 
-	/**
-	 * Getter函数，返回dbName的值。
-	 * 
-	 * @return String: 返回dbName的值。
-	 */
 	public String GetDBName() {
 		return this.dbName;
 	}
 
-	/**
-	 * Setter函数，设置dbName的值。
-	 * 
-	 * @param dbName
-	 *            String类型的数据库表名。
-	 */
 	public void SetDBName(String dbName) {
 		this.dbName = dbName;
 	}
 
-	/**
-	 * 设置数据库连接。driver = "com.mysql.jdbc.Driver";url =
-	 * "jdbc:mysql://localhost:3306/"+DBName; user = "root";password = "1234";
-	 */
 	private void dbConn() {
 		String url = null;
 		String user = null;
@@ -82,9 +53,6 @@ public class SqlIO {
 		}
 	}
 
-	/**
-	 * 关闭数据库。
-	 */
 	public void DBClose() {
 		try {
 			conn.close();
@@ -93,13 +61,6 @@ public class SqlIO {
 		}
 	}
 
-	/**
-	 * 执行Update语句。
-	 * 
-	 * @param sql
-	 *            String类型的Update语句。
-	 * @return int: 影响的行数。
-	 */
 	public int DB_Update(String sql) {
 		int rtn = 0;
 		this.dbConn();
@@ -112,13 +73,6 @@ public class SqlIO {
 		return rtn;
 	}
 
-	/**
-	 * 执行Select语句。
-	 * 
-	 * @param sql
-	 *            String类型的Select语句。
-	 * @return ResultSet: Select语句返回的行的结果集。
-	 */
 	public ResultSet DB_Select(String sql) {
 		ResultSet rtn = null;
 		this.dbConn();
@@ -131,13 +85,6 @@ public class SqlIO {
 		return rtn;
 	}
 
-	/**
-	 * 执行Insert语句。
-	 * 
-	 * @param sql
-	 *            String类型的Insert语句。
-	 * @return int: 影响的行数。
-	 */
 	public int DB_Insert(String sql) {
 		int rtn = 0;
 		this.dbConn();
@@ -151,13 +98,6 @@ public class SqlIO {
 		return rtn;
 	}
 
-	/**
-	 * 执行其他指定的语句。
-	 * 
-	 * @param sql
-	 *            String类型的其他语句。
-	 * @return int: 影响的行数。
-	 */
 	public int DB_Other(String sql) {
 		int rtn = 0;
 		this.dbConn();
